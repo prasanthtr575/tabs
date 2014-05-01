@@ -1,0 +1,58 @@
+<!DOCTTPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <script>
+            var currentTab = null;
+            function switchTab(tab) {
+                if(currentTab != tab) {
+                    var tabId = '#tab'+tab;
+                    var pointId = '#point'+tab;
+                    
+                    document.querySelector(tabId).style.setProperty("background-color", '#f8f8f8');
+                    document.querySelector(pointId).style.setProperty("border-top", '13px solid #f8f8f8');
+                    document.querySelector(tabId).style.setProperty("color", tab);
+                    document.querySelector('.tabs').style.setProperty("background-color", tab);
+                    
+                    reverseTab(tab);
+                    }
+            }
+            
+            function reverseTab(tab) {
+                if(null === currentTab) {
+                    currentTab = tab;
+                } else {
+                    var tabId = '#tab'+currentTab;
+                    var pointId = '#point'+currentTab;
+                    var borderColor = '13px solid '+ currentTab;
+                    
+                    document.querySelector(tabId).style.setProperty("background-color", currentTab);
+                    document.querySelector(pointId).style.setProperty("border-top", borderColor);
+                    document.querySelector(tabId).style.setProperty("color", '#f8f8f8');
+                    currentTab = tab;
+                }
+            }
+        </script>
+        <title>
+            Tabs
+        </title>
+    </head>
+    <body>
+        <div class="tabs">
+            <div class="tabItemContainer">
+                <div class="tabItem" id="tabred" onclick="switchTab('red')">Red</div>
+                <div class="tabItem" id="tabgreen" onclick="switchTab('green')">Green</div>
+                <div class="tabItem" id="tabblue" onclick="switchTab('blue')">Blue</div>
+            </div>
+            <div class="tabPointContainer">
+                <div class="tabPoint" ><div class="arrow-down" id="pointred" onclick="switchTab('red')"></div></div>
+                <div class="tabPoint" ><div class="arrow-down" id="pointgreen" onclick="switchTab('green')"></div></div>
+                <div class="tabPoint" ><div class="arrow-down" id="pointblue" onclick="switchTab('blue')"></div></div>
+            </div>
+        </div>
+        <script>
+            switchTab('red');
+        </script>
+    </body>
+</html>
